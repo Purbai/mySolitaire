@@ -1,5 +1,7 @@
 import { Card } from "../card_data/card_data";
 
+// set up globally to allow sharing of card(s) selected
+import { getSelectedCard, setSelectedCard } from './cardState';
 export const displayRemainingDrawCards = (remainingCards: Card[]) => {
   const drawPile = document.querySelector(".game__remaining-pile--todraw");
   if (!drawPile) return;
