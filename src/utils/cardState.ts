@@ -1,15 +1,19 @@
-import type { Card } from "../card_data/card_data";
+import { Card } from "../card_data/card_data";
 
-export let selectedCard: {
+let selectedCard: {
   card: Card;
   fromCol: number;
   cardIndex: number;
 } | null = null;
 
-export function setSelectedCard(value: typeof selectedCard) {
-  selectedCard = value;
-}
+let cardsToCol: Card[][] = [];
 
-export function getSelectedCard() {
-  return selectedCard;
-}
+export const getSelectedCard = () => selectedCard;
+export const setSelectedCard = (val: typeof selectedCard) => {
+  selectedCard = val;
+};
+
+export const getCardsToCol = () => cardsToCol;
+export const setCardsToCol = (val: Card[][]) => {
+  cardsToCol = val;
+};
