@@ -1,7 +1,7 @@
 import { Card } from "../card_data/card_data";
 
 export const displayRemainingDrawCards = (remainingCards: Card[]) => {
-  const drawPile = document.querySelector(".remaining__pile--todraw");
+  const drawPile = document.querySelector(".game__remaining-pile--todraw");
   if (!drawPile) return;
 
   drawPile.innerHTML = ''; // clear once, outside the loop

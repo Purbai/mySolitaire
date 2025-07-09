@@ -19,76 +19,76 @@
   gap: 50px;
   padding: 50px;
   border: 4px double white;
-  align-items: flex-start; 
+  align-items: flex-start;
   justify-content: flex-start;
   text-align: center;
 
-  .top-row {
+  &__top-row {
     display: flex;
     flex-direction: row;
-    gap: 100px; // spacing between remaining and foundation
+    gap: 100px;
     align-items: flex-start;
   }
-//}
-  .remaining {
+
+  &__remaining {
     display: flex;
     flex-direction: row;
     gap: 20px;
 
-    &__pile {
+    &-pile {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100px;
       height: 150px;
-      background-color: #333;
-     // border: 3px solid white;
       font-weight: bold;
       overflow: visible;
       position: relative;
+
+      &--todraw {
+        position: relative; 
+      }
     }
-    button {
+
+    &-button {
       font-size: 50px;
-      background-color: greenyellow;
+      background-color: green;
       width: 60px;
       height: 60px;
       font-weight: bold;
     }
   }
 
-
-  .foundation {
+  &__foundation {
     display: flex;
     flex-direction: row;
     margin-left: 50px;
     gap: 20px;
 
-    &__pile {
+    &-pile {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 100px;
       height: 150px;
-      background-color: #333;
-      border: 3px solid white;
       font-weight: bold;
     }
   }
 
-  .solitaire {
+  &__solitaire {
     display: flex;
     flex-direction: row;
     gap: 20px;
-        &__pile {
-          position: relative;
-          width: 100px;
-          min-height: 150px;
-          border: 3px solid white;
-          background-color: #333;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+
+    &-pile {
+      position: relative;
+      width: 100px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
 
@@ -104,7 +104,6 @@
   font-size: 20px;
   position: relative;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-
 }
 
 .card--facedown {
@@ -116,9 +115,4 @@
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.remaining__pile--todraw {
-  position: relative; // Needed for child cards' absolute positioning
-}
 }

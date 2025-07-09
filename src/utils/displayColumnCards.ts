@@ -4,13 +4,13 @@ import { Card } from "../card_data/card_data";
  
  // Clear existing cards
  for (let i = 1; i <= 7; i++) {
-    const pile = document.querySelector(`.solitaire__pile--${i}`);
+    const pile = document.querySelector(`.game__solitaire-pile--${i}`);
     if (pile) pile.innerHTML = '';
   }
 
   // Render cards into their respective piles
   cardstoCol.forEach((column, colIndex) => {
-    const pile = document.querySelector(`.solitaire__pile--${colIndex + 1}`);
+    const pile = document.querySelector(`.game__solitaire-pile--${colIndex + 1}`);
     if (!pile) return;
 
     column.forEach((card, rowIndex) => {
@@ -23,7 +23,7 @@ import { Card } from "../card_data/card_data";
       else{
           cardDiv.style.color = (card.colour === 'Red' && card.isFaceUp) ? 'red' : (card.isFaceUp) ? 'black' : 'white'
       }
-      cardDiv.style.marginTop = `-80px`;
+      cardDiv.style.marginTop = `-85px`;
       pile.appendChild(cardDiv);
     });
   });
