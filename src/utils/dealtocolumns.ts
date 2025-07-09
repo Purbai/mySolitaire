@@ -9,9 +9,6 @@ export function dealToColumns(deck: Card[]): Card[][] {
         const card = deck[deckIndex++];
         card.isFaceUp = row === col; // top card in each column is face up
         columns[col].push(card);
-        // const dealtCards = document.createElement("div")
-        // // dealtCards.textContent = values;
-
       }
     }
   

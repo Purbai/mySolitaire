@@ -1,42 +1,29 @@
 import './style.scss'
-import { SUITS, CARD_LABELS, Card, type CardLabel, type Suit } from "./card_data/card_data";
+import { Card} from "./card_data/card_data";
 import { createDeck } from './card_data/create_deck';
 import { dealToColumns } from './utils/dealtocolumns';
+import { displayColumnCards } from './utils/displayColumnCards';
+import { displayRemainingDrawCards } from './utils/displayRemainingDrrawCards';
+
 
 const start = document.querySelector<HTMLButtonElement>('#start');
 
 const handleStartClick = () => {
+    // create the deck
     const deck = createDeck(Card);
+    // sort the deck in random order
     deck.sort(() => Math.random() - 0.5);
   
+    // deal cards to each of 7 columns and display on the page
     const cardstoCol = dealToColumns(deck);
-    console.log(cardstoCol);
-  
-    // Clear existing cards
-    for (let i = 1; i <= 7; i++) {
-      const pile = document.querySelector(`.solitaire__pile--${i}`);
-      if (pile) pile.innerHTML = '';
-    }
-  
-    // Render cards into their respective piles
-    cardstoCol.forEach((column, colIndex) => {
-      const pile = document.querySelector(`.solitaire__pile--${colIndex + 1}`);
-      if (!pile) return;
-  
-      column.forEach((card, rowIndex) => {
-        const cardDiv = document.createElement("div");
-        cardDiv.textContent = card.isFaceUp ? card.toString() : "🂠";
-        cardDiv.classList.add("card");
-        if (!card.isFaceUp) {
-          cardDiv.classList.add("card--facedown");
-        }
-        else{
-            cardDiv.style.color = (card.colour === 'Red' && card.isFaceUp) ? 'red' : (card.isFaceUp) ? 'black' : 'white'
-        }
-        cardDiv.style.marginTop = `-80px`;
-        pile.appendChild(cardDiv);
-      });
-    });
+    displayColumnCards(cardstoCol);
+    // get the remaining cards
+    const remainingCards = [...deck];
+    remainingCards.splice(0,28);
+    console.log(remainingCards);
+    displayRemainingDrawCards(remainingCards);
+
+
   };
 
 if (start) {
