@@ -2,6 +2,7 @@ import { Card, SUITS } from "../card_data/card_data";
 import { displayColumnCards } from "./displayColumnCards";
 import { getSelectedCard, setSelectedCard } from './cardState';
 import { getCardsToCol } from './cardState';
+import { displayRemainingAndWasteCards } from "./displayRemainingAndWasteCards";
 
  const foundations: Record<string, Card[]> = {
    Hearts: [],
@@ -55,33 +56,32 @@ if (topCard) {
       }
      
       // Check only top card can be moved
-      if (fromCol !== -1 && cardIndex !== cards[fromCol].length - 1) {
+      if (fromCol !== -1 && (!cards[fromCol] || cardIndex !== cards[fromCol].length - 1)) {
         alert('Only the top face-up card can be moved to the foundation.');
         setSelectedCard(null);
         displayColumnCards(cards, wastePile, remainingPile);
         return;
       }
+
       if (fromCol === -1) {
-        wastePile.pop();
-      } else {
-        cards[fromCol].pop();
-        if (cards[fromCol].length > 0) {
-          cards[fromCol][cards[fromCol].length -1].isFaceUp = true;
+        if (wastePile[cardIndex] === card) {
+          wastePile.splice(cardIndex, 1);
+        } else {
+          wastePile.pop(); // fallback
+        }
+      
+        // Flip new top card face-up
+        if (wastePile.length > 0) {
+          wastePile[wastePile.length - 1].isFaceUp = true;
         }
       }
-      targetStack.push(card);
-
-      const fromCards = cards[fromCol];
-      if (fromCards.length > 0) {
-        fromCards[fromCards.length - 1].isFaceUp = true;
-      }
-
       // add to the foundation 
       targetStack.push(card);
 
       setSelectedCard(null);
       displayColumnCards(cards, wastePile,remainingPile);
       displayFoundationCards(wastePile,remainingPile); 
+      displayRemainingAndWasteCards(remainingPile, wastePile)
     });
   }
 }

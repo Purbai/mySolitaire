@@ -54,6 +54,8 @@ export function displayRemainingAndWasteCards(remainingPile: Card[], wastePile: 
         }));
         wastePile.length = 0;
       } else {
+        // make sure that previous faced-up card is switched to face down
+        if (wastePile.length > 0) wastePile[wastePile.length-1].isFaceUp = false;
         const drawn = remainingPile.splice(-3);
         drawn.forEach(card => card.isFaceUp = false);
         if (drawn.length > 0) drawn[drawn.length - 1].isFaceUp = true;
