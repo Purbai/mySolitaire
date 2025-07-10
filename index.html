@@ -11,14 +11,13 @@
       <div class="game__top-row">
         <div class="game__remaining">
           <div class="game__remaining-pile game__remaining-pile--todraw">remain pile</div>
-          <div class="game__remaining-pile game__remaining-pile">draw pile</div>
+          <div class="game__remaining-pile game__remaining-pile--waste">waste pile</div>
         </div>
         <div id ="foundationRows" class="game__foundation">
-          <!-- <div class="game__foundation-pile">Hearts</div>
-          <div class="game__foundation-pile">Spades</div>
-          <div class="game__foundation-pile">Diamonds</div>
-          <div class="game__foundation-pile">Clubs</div> -->
-          <!-- <div id="foundationRows" class="game__foundation"></div> -->
+          <div class="game__foundation game__foundation-pile--hearts" data-suit="Hearts">Hearts</div>
+          <div class="game__foundation game__foundation-pile--spades"  data-suit="Spades">Spades</div>
+          <div class="game__foundation game__foundation-pile--diamonds"  data-suit="Diamonds">Diamonds</div>
+          <div class="game__foundation game__foundation-pile--clubs" data-suit="Clubs">Clubs</div>
         </div>
         <button class="game__start-button" id="start">Start</button>
         <button class="game__stop-button" id="stop">Stop</button>

@@ -1,3 +1,24 @@
+@use './devices.scss';
+
+@mixin phone {
+
+  // for screens 428px or smaller
+  @media only screen and (max-width: devices.$xs) {
+    @content;
+  }
+}
+
+@mixin desktop {
+
+  // for screens 
+  // @media only screen and (min-width: (devices.$xs + 1px)) and (max-width: devices.$lg) {
+  //     @content;
+  // }
+  @media only screen and (min-width: (devices.$xs + 1px)) {
+    @content;
+  }
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -75,21 +96,23 @@
       font-weight: bold;
       background-color: #666;
       
-      
+      &__hearts,
+        &__clubs,
+        &__diamonds,
+        &__spades {
+          width: 80px;
+          height: 120px;
+          border: 2px dashed #999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 5px;
+          background-color: white;
+          color: black;
+          font-weight: bold;
+          cursor: pointer; }
     }
-    &__pile {
-      width: 80px;
-        height: 120px;
-        border: 2px dashed #999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 5px;
-        background-color: white;
-        color: black;
-        font-weight: bold;
-        cursor: pointer;   
-    }
+    
   }
     .foundation__pile:hover {
       background-color: #666;}
