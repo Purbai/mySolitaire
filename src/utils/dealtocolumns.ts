@@ -1,6 +1,6 @@
 import {  Card } from "../card_data/card_data";
 
-export function dealToColumns(deck: Card[]): Card[][] {
+export const dealToColumns = (deck: Card[]): Card[][] => {
     const columns: Card[][] = [[], [], [], [], [], [], []]; // array for each column - 7 cols
     let deckIndex = 0;
   
@@ -11,6 +11,5 @@ export function dealToColumns(deck: Card[]): Card[][] {
         columns[col].push(card);
       }
     }
-  
     return columns;
   }
