@@ -11,7 +11,7 @@ export const renderSolitaireCards = (
   remainingPile: Card[]
 ) => {
   column.forEach((card, index) => {
-    const cardDiv = createCardElement(card);
+    const cardDiv = createCardElement(card, index);
     cardDiv.addEventListener("click", (e) => {
       e.stopPropagation();
       if (!card.isFaceUp) return;

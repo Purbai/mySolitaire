@@ -59,6 +59,6 @@ Walkthrough of the solitaire game reproduction with basic funcationality and sty
             - [x] top card is faced up in the waste pile
             - [x] top card can be moved to the foundation pile
             - [x] top card can be moved to the solitaire piles if card value is one higher and different colour to the top card on the solitaire pile
-            - [x] when K is moved to the solitaire empty column, the top card in the waste pile is not faced-up
+            - [] when K is moved to the solitaire empty column, the top card in the waste pile is not faced-up
                 - [x] cards which have been faced-up are not getting reset to face down when the next set of cards are moved from remaining pile to waste and a card is moved to solitaire column
         - [x] clicking empty remaining pile will recycle all cards from waste pile to remaining pile

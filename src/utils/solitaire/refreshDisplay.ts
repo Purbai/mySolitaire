@@ -1,6 +1,6 @@
 import { Card } from "../../card_data/card_data";
 import { displaySolitaireCards } from "../../displaySolitaireCards";
-import { displayRemainingAndWasteCards } from "../displayRemainingAndWasteCards";
+import { displayRemainingAndWasteCards } from "../../displayRemainingAndWasteCards";
 
 export const refreshDisplay = (
   cardstoCol: Card[][],

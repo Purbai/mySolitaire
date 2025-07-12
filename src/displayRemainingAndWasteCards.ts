@@ -1,8 +1,8 @@
-import { Card } from "../card_data/card_data";
-import { clearPiles } from "./remainingAndWaste/clearPiles";
-import { renderRemainingPile } from "./remainingAndWaste/renderRemainingPile";
-import { renderWastePile } from "./remainingAndWaste/renderWastePile";
-import { addRemainingPileClickListener } from "./remainingAndWaste/addRemainingPileClickListener";
+import { Card } from "./card_data/card_data";
+import { clearPiles } from "./utils/remainingAndWaste/clearPiles";
+import { renderRemainingPile } from "./utils/remainingAndWaste/renderRemainingPile";
+import { renderWastePile } from "./utils/remainingAndWaste/renderWastePile";
+import { addRemainingPileClickListener } from "./utils/remainingAndWaste/addRemainingPileClickListener";
 
 let isInitialized = false;
 
@@ -26,4 +26,4 @@ export const displayRemainingAndWasteCards = (
     addRemainingPileClickListener(remainDiv, remainingPile, wastePile);
     isInitialized = true;
   }
-}
+};

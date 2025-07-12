@@ -2,7 +2,7 @@ import { Card } from "../../card_data/card_data";
 import { isValidFoundationMove } from "./isValidFoundationMove";
 import { removeCardFromSource } from "./removeCardFromSource";
 import { getSelectedCard, setSelectedCard } from "../../state/cardState";
-import { displayRemainingAndWasteCards } from "../displayRemainingAndWasteCards";
+import { displayRemainingAndWasteCards } from "../../displayRemainingAndWasteCards";
 import {
   displayFoundationCards,
   foundations,

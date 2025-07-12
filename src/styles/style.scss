@@ -135,7 +135,8 @@
     &-pile {
       position: relative;
       width: 100px;
-      min-height: 150px;
+      // min-height: 150px;
+      min-height: 500px;
       display: flex;
       flex-direction: column;
       align-items: center;;
@@ -152,16 +153,21 @@
   color: black;
   border: 1px solid black;
   border-radius: 6px;
-  text-align: center;
+  text-align: left;
   line-height: 120px;
-  font-size: 20px;
-  position: relative;
+  font-size: 14px;
+  // position: relative;
+  position: absolute;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   // user-select: none;
   // display: flex;
   // justify-content: flex-start;
   // align-items: flex-start;
 
+}
+
+.card_value {
+  font-weight: bold;
 }
 
 .card--facedown {

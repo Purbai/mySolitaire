@@ -1,6 +1,7 @@
 import { Card } from "../../card_data/card_data";
 import { getSelectedCard, setSelectedCard } from "../../state/cardState";
 import { validateMove } from "./validMove";
+import { cancelMove } from "./cancelMove";
 import { refreshDisplay } from "./refreshDisplay";
 import { moveSelectedCards } from "./moveSelectedCards";
 
@@ -22,6 +23,9 @@ export const handleCardClick = (
   }
 
   const toCol = cardstoCol[colIndex];
+  const isCancel = cancelMove(selected.card, toCol[toCol.length - 1]);
+  if (!isCancel) 
+  {
   const isValid = validateMove(selected.card, toCol[toCol.length - 1]);
 
   if (!isValid) {
@@ -31,6 +35,8 @@ export const handleCardClick = (
     return;
   }
 
+  }
+  
   moveSelectedCards(selected, colIndex, cardstoCol, wastePile);
   refreshDisplay(cardstoCol, wastePile, remainingPile);
 };

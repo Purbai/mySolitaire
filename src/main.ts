@@ -3,11 +3,11 @@ import { Card } from "./card_data/card_data";
 import { createDeck } from "./card_data/create_deck";
 import { dealToColumns } from "./utils/dealtocolumns";
 import { displaySolitaireCards } from "./displaySolitaireCards";
-import { displayRemainingAndWasteCards } from "./utils/displayRemainingAndWasteCards";
+import { displayRemainingAndWasteCards } from "./displayRemainingAndWasteCards";
 import { displayFoundationCards } from "./displayFoundationCards";
 import { setCardsToCol } from "./state/cardState";
 import { resetFoundations } from "./utils/foundation/foundations";
-import { clearBoard } from "./clearBoard";
+import { clearBoard } from "./utils/clearBoard";
 
 const start = document.querySelector<HTMLButtonElement>("#start");
 
