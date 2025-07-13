@@ -30,8 +30,19 @@ const handleStartClick = () => {
   displayFoundationCards(wastePile, remainingPile);
 };
 
+// checking for touch on mobile
+let touched = false;
+const handleTouchClickStart = (e: Event) => {
+  if (touched && e.type === "click") return;
+  if (e.type === "touchstart") touched = true;
+
+  handleStartClick();
+};
+
 if (start) {
-  start.addEventListener("click", handleStartClick);
+  start.addEventListener("click", handleTouchClickStart);
+  start.addEventListener("touchstart", handleTouchClickStart);
 } else {
   alert("Start button not found in the DOM");
 }
+

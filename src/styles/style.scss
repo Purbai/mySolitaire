@@ -12,7 +12,7 @@
   // @media only screen and (min-width: (devices.$xs + 1px)) and (max-width: devices.$lg) {
   //     @content;
   // }
-  @media only screen and (min-width: (devices.$xs + 1px)) {
+  @media only screen and (min-width: #{devices.$xs + 1px}) {
     @content;
   }
 }
@@ -32,9 +32,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 .game {
   display: flex;
   flex-direction: column;
+  width: 90%;
+  height: 80%;
+
   gap: 50px;
   padding: 50px;
   border: 4px double white;
@@ -44,9 +53,12 @@
 
   &__top-row {
     display: flex;
-    flex-direction: row;
-    gap: 100px;
+    gap: 50px;
+    @include desktop {
+      gap: 100px;
+    }
     align-items: flex-start;
+    justify-content: flex-start;
   }
 
   &__remaining {
@@ -57,74 +69,85 @@
     &-pile {
       display: flex;
       align-items: center;
-      //justify-content: center;
-      width: 100px;
-      height: 150px;
+      margin: 5px;
       font-weight: bold;
       overflow: visible;
       position: relative;
+      @include desktop {
+        width: 100px;
+        height: 150px;
+      }
+      @include phone {
+        width: 50px;
+        height: 75px;
+      }
 
       &--todraw {
-        position: relative;
-        width: 80px;
-        height: 120px;
-        border: 2px dashed #999;
-        display: flex;
-        align-items: center;
-        //justify-content:center;
-        margin: 5px;
         background-color: white;
-        color: black;
         font-weight: bold;
         cursor: pointer;
       }
     }
 
-    &-button {
-      font-size: 50px;
-      background-color: green;
-      width: 60px;
-      height: 60px;
-      font-weight: bold;
     }
+    
+    &__start-button,
+    &__stop-button {
+      font-size: 16px;
+      background-color: green;
+      width: 100px;
+      height: 50px;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+
+      @include phone {
+        font-size: 10px;
+        width: 90px;
+        height: 45px;
+      }
+
+      &:hover {
+        background-color: blue;
+      }
   }
 
   &__foundation {
     display: flex;
     flex-direction: row;
-    margin-left: 50px;
     gap: 20px;
 
     &-pile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      //justify-content: center;
-      width: 100px;
-      height: 150px;
-      font-weight: bold;
-      background-color: #666;
+          @include phone {
+        width: 60px;
+        height: 90px;
 
-      &__hearts,
-      &__clubs,
-      &__diamonds,
-      &__spades {
-        width: 80px;
-        height: 120px;
+      }
+  @include desktop {
+    width: 120px;
+    height: 180px;
+
+  }
+      &--hearts,
+      &--clubs,
+      &--diamonds,
+      &--spades {
         border: 2px dashed #999;
         display: flex;
         align-items: center;
-        //justify-content: center;
-        margin: 5px;
         background-color: white;
         color: black;
         font-weight: bold;
         cursor: pointer;
+
       }
     }
-  }
-  .foundation__pile:hover {
+    .foundation__pile:hover {
     background-color: #666;
+  }
+
   }
 
   &__solitaire {
@@ -134,12 +157,17 @@
 
     &-pile {
       position: relative;
-      width: 100px;
-      // min-height: 150px;
-      min-height: 500px;
+      @include phone {
+        width: 100px;
+        min-height: 500px;
+      }
+      @include desktop {
+        width: 200px;
+        min-height: 800px;
+      }
       display: flex;
       flex-direction: column;
-      align-items: center;;
+      align-items: center;
       background-color: rgba(0, 255, 0, 0.2);
       cursor: pointer;
     }
@@ -147,23 +175,22 @@
 }
 
 .card {
-  width: 60px;
-  height: 90px;
   background-color: white;
-  color: black;
   border: 1px solid black;
-  border-radius: 6px;
   text-align: left;
-  line-height: 120px;
-  font-size: 14px;
-  // position: relative;
   position: absolute;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  // user-select: none;
-  // display: flex;
-  // justify-content: flex-start;
-  // align-items: flex-start;
-
+  @include phone {
+    width: 60px;
+    height: 90px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  @include desktop {
+    width: 120px;
+    height: 180px;
+    font-size: 40px;
+    border-radius: 10px;
+  }
 }
 
 .card_value {
@@ -179,9 +206,4 @@
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.card__corner {
-  font-size: 14px;
-  font-weight: bold;
 }
