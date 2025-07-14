@@ -2,13 +2,7 @@ import { getCardsToCol } from "./state/cardState";
 import { Card,SUITS } from "./card_data/card_data";
 import { renderFoundationPile } from "./utils/foundation/renderFoundationPile";
 import { handleFoundationClick } from "./utils/foundation/handleFoundationClick";
-
-export const foundations: Record<string, Card[]> = {
-  Hearts: [],
-  Diamonds: [],
-  Clubs: [],
-  Spades: [],
-};
+import { foundations } from "./state/foundationStates";
 
 export function displayFoundationCards(
   wastePile: Card[],

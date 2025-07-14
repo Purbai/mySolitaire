@@ -12,7 +12,8 @@ export const renderFoundationPile = (
     cardDiv.classList.add("card");
     cardDiv.style.color = topCard.colour === "Red" ? "red" : "black";
     foundationPile.appendChild(cardDiv);
-  } else {
+  } 
+  else {
     foundationPile.textContent = suit;
   }
 }

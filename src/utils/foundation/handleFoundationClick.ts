@@ -3,11 +3,9 @@ import { isValidFoundationMove } from "./isValidFoundationMove";
 import { removeCardFromSource } from "./removeCardFromSource";
 import { getSelectedCard, setSelectedCard } from "../../state/cardState";
 import { displayRemainingAndWasteCards } from "../../displayRemainingAndWasteCards";
-import {
-  displayFoundationCards,
-  foundations,
-} from "../../displayFoundationCards";
+import {  displayFoundationCards} from "../../displayFoundationCards";
 import { displaySolitaireCards } from "../../displaySolitaireCards";
+import { foundations } from "../../state/foundationStates";
 
 export const handleFoundationClick = (
   suit: string,

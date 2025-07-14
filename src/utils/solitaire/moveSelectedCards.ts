@@ -20,10 +20,14 @@ export const moveSelectedCards = (
   }
 
   cardstoCol[toColIndex].push(...movingCards);
+  console.log(selected, cardstoCol[selected.fromCol])
 
   if (selected.fromCol !== -1) {
     const fromCol = cardstoCol[selected.fromCol];
     if (fromCol.length > 0) fromCol[fromCol.length - 1].isFaceUp = true;
+  }
+  else {
+    wastePile[wastePile.length - 1].isFaceUp = true;
   }
 
   setSelectedCard(null);

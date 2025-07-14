@@ -20,6 +20,10 @@ export const moveCardsToEmptyPile = (
     const fromCol = cardstoCol[selected.fromCol];
     if (fromCol.length > 0) fromCol[fromCol.length - 1].isFaceUp = true;
   }
+  else {
+    // make sure that top card is always faced up
+    wastePile[wastePile.length -1].isFaceUp = true;
+  }
 
   setSelectedCard(null);
 };

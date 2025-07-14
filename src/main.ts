@@ -6,7 +6,7 @@ import { displaySolitaireCards } from "./displaySolitaireCards";
 import { displayRemainingAndWasteCards } from "./displayRemainingAndWasteCards";
 import { displayFoundationCards } from "./displayFoundationCards";
 import { setCardsToCol } from "./state/cardState";
-import { resetFoundations } from "./utils/foundation/foundations";
+import { resetFoundations } from "./utils/foundation/resetFoundations";
 import { clearBoard } from "./utils/clearBoard";
 
 const start = document.querySelector<HTMLButtonElement>("#start");
