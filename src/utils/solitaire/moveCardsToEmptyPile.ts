@@ -1,11 +1,8 @@
 import { Card } from "../../card_data/card_data";
-import { setSelectedCard , getCardsToCol} from "../../state/solitaireStates";
-import { wastePile } from "../../state/remainingAndWasteState";
+import { setSelectedCard, getCardsToCol } from "../../state/cardState";
+import { wastePile } from "../../state/gameState";
 
-export const moveCardsToEmptyPile = (
-  selected: any,
-  toColIndex: number
-) => {
+export const moveCardsToEmptyPile = (selected: any, toColIndex: number) => {
   const cardstoCol = getCardsToCol();
   let movingCards: Card[] =
     selected.fromCol === -1

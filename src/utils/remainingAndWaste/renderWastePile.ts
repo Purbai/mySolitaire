@@ -1,9 +1,7 @@
-import { setSelectedCard } from "../../state/solitaireStates";
-import { wastePile } from "../../state/remainingAndWasteState";
+import { setSelectedCard } from "../../state/cardState";
+import { wastePile } from "../../state/gameState";
 
-export const renderWastePile = (
-  wasteDiv: HTMLElement
-) => {
+export const renderWastePile = (wasteDiv: HTMLElement) => {
   const visible = wastePile.slice(-3); // last 3 cards
 
   visible.forEach((card, idx) => {

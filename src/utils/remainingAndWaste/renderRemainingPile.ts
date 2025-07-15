@@ -1,8 +1,6 @@
-import { remainingPile } from "../../state/remainingAndWasteState";
+import { remainingPile } from "../../state/gameState";
 
-export const renderRemainingPile = (
-  remainDiv: HTMLElement
-) => {
+export const renderRemainingPile = (remainDiv: HTMLElement) => {
   if (remainingPile.length === 0) return;
 
   const remainCardDiv = document.createElement("div");

@@ -1,5 +1,9 @@
 import { Card } from "../../card_data/card_data";
-import { getSelectedCard, setSelectedCard, getCardsToCol } from "../../state/solitaireStates";
+import {
+  getSelectedCard,
+  setSelectedCard,
+  getCardsToCol,
+} from "../../state/cardState";
 import { validateMove } from "./validMove";
 import { cancelMove } from "./cancelMove";
 import { refreshDisplay } from "./refreshDisplay";

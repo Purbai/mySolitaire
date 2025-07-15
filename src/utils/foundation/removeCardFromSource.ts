@@ -1,6 +1,6 @@
 import { Card } from "../../card_data/card_data";
-import { wastePile } from "../../state/remainingAndWasteState";
-import { getCardsToCol } from "../../state/solitaireStates";
+import { wastePile } from "../../state/gameState";
+import { getCardsToCol } from "../../state/cardState";
 
 export const removeCardFromSource = (
   fromCol: number,
@@ -20,7 +20,12 @@ export const removeCardFromSource = (
     }
   } else {
     const col = cards[fromCol];
-    console.log ("inside removeCardFromSource before if ...", col,col.length, card)
+    console.log(
+      "inside removeCardFromSource before if ...",
+      col,
+      col.length,
+      card
+    );
     if (col && col[col.length - 1] === card) {
       col.pop();
       if (col.length > 0) {

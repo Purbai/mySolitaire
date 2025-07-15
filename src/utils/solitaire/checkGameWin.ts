@@ -1,10 +1,10 @@
-import { getCardsToCol } from "../../state/solitaireStates";
+import { getCardsToCol } from "../../state/cardState";
 import { autoMoveToFoundation } from "../foundation/autoMoveToFoundation";
 import { displayFoundationCards } from "../../displayFoundationCards";
 import { displaySolitaireCards } from "../../displaySolitaireCards";
-import { wastePile, remainingPile } from "../../state/remainingAndWasteState";
+import { wastePile, remainingPile } from "../../state/gameState";
 
-export const checkGameWin=() => {
+export const checkGameWin = () => {
   const cardstoCol = getCardsToCol();
   const allFaceUp = cardstoCol.every((col) =>
     col.every((card) => card.isFaceUp)
@@ -16,4 +16,4 @@ export const checkGameWin=() => {
     displaySolitaireCards();
     alert("You have won the game - well done!");
   }
-}
+};

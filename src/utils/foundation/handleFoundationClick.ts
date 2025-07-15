@@ -1,6 +1,10 @@
 import { isValidFoundationMove } from "./isValidFoundationMove";
 import { removeCardFromSource } from "./removeCardFromSource";
-import { getCardsToCol, getSelectedCard, setSelectedCard } from "../../state/solitaireStates";
+import {
+  getCardsToCol,
+  getSelectedCard,
+  setSelectedCard,
+} from "../../state/cardState";
 import { displayRemainingAndWasteCards } from "../../displayRemainingAndWasteCards";
 import { displayFoundationCards } from "../../displayFoundationCards";
 import { displaySolitaireCards } from "../../displaySolitaireCards";
@@ -10,7 +14,7 @@ export const handleFoundationClick = (
   suit: string,
   foundationPile: HTMLElement
 ) => {
-  const cards=getCardsToCol();
+  const cards = getCardsToCol();
   foundationPile.addEventListener("click", () => {
     const selectedCard = getSelectedCard();
     if (!selectedCard) return;
@@ -33,7 +37,7 @@ export const handleFoundationClick = (
         cardIndex,
         card
       );
-      removeCardFromSource(fromCol, cardIndex,card);
+      removeCardFromSource(fromCol, cardIndex, card);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : String(err);
       alert(errorMessage);

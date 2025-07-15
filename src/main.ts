@@ -5,10 +5,10 @@ import { dealToColumns } from "./utils/dealtocolumns";
 import { displaySolitaireCards } from "./displaySolitaireCards";
 import { displayRemainingAndWasteCards } from "./displayRemainingAndWasteCards";
 import { displayFoundationCards } from "./displayFoundationCards";
-import { setCardsToCol } from "./state/solitaireStates";
+import { setCardsToCol } from "./state/cardState";
 import { resetFoundations } from "./utils/foundation/resetFoundations";
 import { clearBoard } from "./utils/clearBoard";
-import { setRemainingPile, setWastePile } from "./state/remainingAndWasteState";
+import { setRemainingPile, setWastePile } from "./state/gameState";
 
 const start = document.querySelector<HTMLButtonElement>("#start");
 

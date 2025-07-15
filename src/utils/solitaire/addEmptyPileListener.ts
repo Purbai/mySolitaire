@@ -1,12 +1,9 @@
-import { getCardsToCol, getSelectedCard } from "../../state/solitaireStates";
+import { getCardsToCol, getSelectedCard } from "../../state/cardState";
 import { refreshDisplay } from "./refreshDisplay";
 import { moveCardsToEmptyPile } from "./moveCardsToEmptyPile";
 import { displayRemainingAndWasteCards } from "../../displayRemainingAndWasteCards";
 
-export const addEmptyPileClickListener = (
-  pile: Element,
-  colIndex: number
-) => {
+export const addEmptyPileClickListener = (pile: Element, colIndex: number) => {
   pile.addEventListener("click", () => {
     const cardstoCol = getCardsToCol();
     const selected = getSelectedCard();
