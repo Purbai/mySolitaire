@@ -20,12 +20,12 @@ export const removeCardFromSource = (
     }
   } else {
     const col = cards[fromCol];
-    console.log(
-      "inside removeCardFromSource before if ...",
-      col,
-      col.length,
-      card
-    );
+    // console.log(
+    //   "inside removeCardFromSource before if ...",
+    //   col,
+    //   col.length,
+    //   card
+    // );
     if (col && col[col.length - 1] === card) {
       col.pop();
       if (col.length > 0) {
