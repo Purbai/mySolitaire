@@ -1,14 +1,11 @@
-import { getCardsToCol } from "./state/cardState";
-import { Card,SUITS } from "./card_data/card_data";
+
+import { SUITS } from "./card_data/card_data";
 import { renderFoundationPile } from "./utils/foundation/renderFoundationPile";
 import { handleFoundationClick } from "./utils/foundation/handleFoundationClick";
 import { foundations } from "./state/foundationStates";
 
-export function displayFoundationCards(
-  wastePile: Card[],
-  remainingPile: Card[]
-) {
-  const cards = getCardsToCol();
+export function displayFoundationCards() {
+
 
   for (const suit in SUITS) {
     const foundationPile = document.querySelector(
@@ -21,12 +18,6 @@ export function displayFoundationCards(
     const topCard = stack[stack.length - 1];
 
     renderFoundationPile(suit, topCard, foundationPile);
-    handleFoundationClick(
-      suit,
-      foundationPile,
-      cards,
-      wastePile,
-      remainingPile
-    );
+    handleFoundationClick(suit, foundationPile);
   }
 }

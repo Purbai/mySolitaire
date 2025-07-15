@@ -1,35 +1,29 @@
-import { Card } from "./card_data/card_data";
 import { clearAllPiles } from "./utils/solitaire/clearAllPiles";
 import { addEmptyPileClickListener } from "./utils/solitaire/addEmptyPileListener";
 import { renderSolitaireCards } from "./utils/solitaire/renderSolitaireCards";
+import { getCardsToCol } from "./state/solitaireStates";
 
-export const displaySolitaireCards = (
-  cardstoCol: Card[][],
-  wastePile: Card[],
-  remainingPile: Card[]
-) => {
-  clearAllPiles();
+export const displaySolitaireCards = () =>
 
-  cardstoCol.forEach((column, colIndex) => {
-    const pile = document.querySelector(
-      `.game__solitaire-pile--${colIndex + 1}`
-    );
-    if (!pile) return;
+  {
+    clearAllPiles();
+    const cardstoCol = getCardsToCol();
 
-    addEmptyPileClickListener(
-      pile,
-      colIndex,
-      cardstoCol,
-      wastePile,
-      remainingPile
-    );
-    renderSolitaireCards(
-      pile,
-      column,
-      colIndex,
-      cardstoCol,
-      wastePile,
-      remainingPile
-    );
-  });
-};
+    cardstoCol.forEach((column, colIndex) => {
+      const pile = document.querySelector(
+        `.game__solitaire-pile--${colIndex + 1}`
+      );
+      if (!pile) return;
+
+      addEmptyPileClickListener(
+        pile,
+        colIndex
+
+      );
+      renderSolitaireCards(
+        pile,
+        column,
+        colIndex,
+      );
+    });
+  };

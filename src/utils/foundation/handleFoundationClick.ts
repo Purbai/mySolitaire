@@ -1,19 +1,16 @@
-import { Card } from "../../card_data/card_data";
 import { isValidFoundationMove } from "./isValidFoundationMove";
 import { removeCardFromSource } from "./removeCardFromSource";
-import { getSelectedCard, setSelectedCard } from "../../state/cardState";
+import { getCardsToCol, getSelectedCard, setSelectedCard } from "../../state/solitaireStates";
 import { displayRemainingAndWasteCards } from "../../displayRemainingAndWasteCards";
-import {  displayFoundationCards} from "../../displayFoundationCards";
+import { displayFoundationCards } from "../../displayFoundationCards";
 import { displaySolitaireCards } from "../../displaySolitaireCards";
 import { foundations } from "../../state/foundationStates";
 
 export const handleFoundationClick = (
   suit: string,
-  foundationPile: HTMLElement,
-  cards: Card[][],
-  wastePile: Card[],
-  remainingPile: Card[]
+  foundationPile: HTMLElement
 ) => {
+  const cards=getCardsToCol();
   foundationPile.addEventListener("click", () => {
     const selectedCard = getSelectedCard();
     if (!selectedCard) return;
@@ -24,24 +21,31 @@ export const handleFoundationClick = (
     if (!isValidFoundationMove(card, targetStack, suit)) {
       alert("Card must be next in sequence and same suit.");
       setSelectedCard(null);
-      displaySolitaireCards(cards, wastePile, remainingPile);
+      displaySolitaireCards();
       return;
     }
 
     try {
-      removeCardFromSource(cards, fromCol, cardIndex, card, wastePile);
+      console.log(
+        "before the removeCardFromSource - ",
+        cards,
+        fromCol,
+        cardIndex,
+        card
+      );
+      removeCardFromSource(fromCol, cardIndex,card);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : String(err);
       alert(errorMessage);
       setSelectedCard(null);
-      displaySolitaireCards(cards, wastePile, remainingPile);
+      displaySolitaireCards();
       return;
     }
 
     targetStack.push(card);
     setSelectedCard(null);
-    displaySolitaireCards(cards, wastePile, remainingPile);
-    displayFoundationCards(wastePile, remainingPile);
-    displayRemainingAndWasteCards(remainingPile, wastePile);
+    displaySolitaireCards();
+    displayFoundationCards();
+    displayRemainingAndWasteCards();
   });
 };

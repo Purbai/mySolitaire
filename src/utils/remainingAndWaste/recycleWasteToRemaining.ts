@@ -1,14 +1,12 @@
-import { Card } from "../../card_data/card_data";
+import { remainingPile, wastePile } from "../../state/remainingAndWasteState";
 
-export const recycleWasteToRemaining = (
-  remainingPile: Card[],
-  wastePile: Card[]
-) => {
-  remainingPile.push(
-    ...wastePile.reverse().map((card) => {
-      card.isFaceUp = false;
-      return card;
-    })
-  );
-  wastePile.length = 0;
-};
+export const recycleWasteToRemaining = () =>
+  {
+    remainingPile.push(
+      ...wastePile.reverse().map((card) => {
+        card.isFaceUp = false;
+        return card;
+      })
+    );
+    wastePile.length = 0;
+  };

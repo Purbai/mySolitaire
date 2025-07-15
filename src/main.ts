@@ -5,15 +5,20 @@ import { dealToColumns } from "./utils/dealtocolumns";
 import { displaySolitaireCards } from "./displaySolitaireCards";
 import { displayRemainingAndWasteCards } from "./displayRemainingAndWasteCards";
 import { displayFoundationCards } from "./displayFoundationCards";
-import { setCardsToCol } from "./state/cardState";
+import { setCardsToCol } from "./state/solitaireStates";
 import { resetFoundations } from "./utils/foundation/resetFoundations";
 import { clearBoard } from "./utils/clearBoard";
+import { setRemainingPile, setWastePile } from "./state/remainingAndWasteState";
 
 const start = document.querySelector<HTMLButtonElement>("#start");
 
 const handleStartClick = () => {
   clearBoard();
   resetFoundations();
+  // console.log(
+  //   "inside start button click - after clearboard",
+  //   foundations
+  // );
   const deck = createDeck(Card);
   deck.sort(() => Math.random() - 0.5);
 
@@ -23,11 +28,13 @@ const handleStartClick = () => {
   const remainingPile = [...deck];
   remainingPile.splice(0, 28); // 28 cards used to layout the solitaire columns
   let wastePile: Card[] = [];
-  displaySolitaireCards(cardstoCol, wastePile, remainingPile);
+  setRemainingPile(remainingPile);
+  setWastePile(wastePile);
+  // console.log("inside start button click", remainingPile, wastePile, cardstoCol, foundations);
 
-  displayRemainingAndWasteCards(remainingPile, wastePile);
-
-  displayFoundationCards(wastePile, remainingPile);
+  displaySolitaireCards();
+  displayRemainingAndWasteCards();
+  displayFoundationCards();
 };
 
 // checking for touch on mobile
@@ -45,4 +52,3 @@ if (start) {
 } else {
   alert("Start button not found in the DOM");
 }
-

@@ -1,12 +1,13 @@
 import { Card } from "../../card_data/card_data";
+import { wastePile } from "../../state/remainingAndWasteState";
+import { getCardsToCol } from "../../state/solitaireStates";
 
 export const removeCardFromSource = (
-  cards: Card[][],
   fromCol: number,
   cardIndex: number,
-  card: Card,
-  wastePile: Card[]
+  card: Card
 ) => {
+  const cards = getCardsToCol();
   if (fromCol === -1) {
     // from waste pile
     if (wastePile[cardIndex] === card) {
@@ -19,6 +20,7 @@ export const removeCardFromSource = (
     }
   } else {
     const col = cards[fromCol];
+    console.log ("inside removeCardFromSource before if ...", col,col.length, card)
     if (col && col[col.length - 1] === card) {
       col.pop();
       if (col.length > 0) {
@@ -28,4 +30,4 @@ export const removeCardFromSource = (
       throw new Error("Invalid move: Not the top card.");
     }
   }
-}
+};

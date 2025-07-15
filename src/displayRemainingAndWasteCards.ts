@@ -1,29 +1,26 @@
-import { Card } from "./card_data/card_data";
+
 import { clearPiles } from "./utils/remainingAndWaste/clearPiles";
 import { renderRemainingPile } from "./utils/remainingAndWaste/renderRemainingPile";
 import { renderWastePile } from "./utils/remainingAndWaste/renderWastePile";
 import { addRemainingPileClickListener } from "./utils/remainingAndWaste/addRemainingPileClickListener";
 
-let isInitialized = false;
+export const displayRemainingAndWasteCards = () =>
 
-export const displayRemainingAndWasteCards = (
-  remainingPile: Card[],
-  wastePile: Card[]
-) => {
-  const remainDiv = document.querySelector(
-    ".game__remaining-pile--todraw"
-  ) as HTMLElement;
+  {
+    const oldRemainDiv = document.querySelector(
+      ".game__remaining-pile--todraw"
+    ) as HTMLElement;
 
-  const wasteDiv = document.querySelector(
-    ".game__remaining-pile:not(.game__remaining-pile--todraw)"
-  ) as HTMLElement;
+    const wasteDiv = document.querySelector(
+      ".game__remaining-pile:not(.game__remaining-pile--todraw)"
+    ) as HTMLElement;
 
-  clearPiles(remainDiv, wasteDiv);
-  renderRemainingPile(remainDiv, remainingPile);
-  renderWastePile(wasteDiv, wastePile);
+    clearPiles(oldRemainDiv, wasteDiv);
+    // fix to remaining pile not getting reset on game start click
+    const newRemainDiv = oldRemainDiv.cloneNode(true) as HTMLElement; // refresh DOM node with no old listeners
+    oldRemainDiv.replaceWith(newRemainDiv);
 
-  if (!isInitialized) {
-    addRemainingPileClickListener(remainDiv, remainingPile, wastePile);
-    isInitialized = true;
-  }
-};
+    renderRemainingPile(newRemainDiv);
+    renderWastePile(wasteDiv);
+    addRemainingPileClickListener(newRemainDiv);
+  };

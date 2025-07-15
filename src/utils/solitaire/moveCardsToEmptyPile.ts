@@ -1,12 +1,12 @@
 import { Card } from "../../card_data/card_data";
-import { setSelectedCard } from "../../state/cardState";
+import { setSelectedCard , getCardsToCol} from "../../state/solitaireStates";
+import { wastePile } from "../../state/remainingAndWasteState";
 
 export const moveCardsToEmptyPile = (
   selected: any,
-  toColIndex: number,
-  cardstoCol: Card[][],
-  wastePile: Card[]
+  toColIndex: number
 ) => {
+  const cardstoCol = getCardsToCol();
   let movingCards: Card[] =
     selected.fromCol === -1
       ? [selected.card]
@@ -19,10 +19,9 @@ export const moveCardsToEmptyPile = (
   if (selected.fromCol !== -1) {
     const fromCol = cardstoCol[selected.fromCol];
     if (fromCol.length > 0) fromCol[fromCol.length - 1].isFaceUp = true;
-  }
-  else {
+  } else {
     // make sure that top card is always faced up
-    wastePile[wastePile.length -1].isFaceUp = true;
+    wastePile[wastePile.length - 1].isFaceUp = true;
   }
 
   setSelectedCard(null);

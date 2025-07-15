@@ -1,8 +1,7 @@
-import { Card } from "../../card_data/card_data";
+import { remainingPile } from "../../state/remainingAndWasteState";
 
 export const renderRemainingPile = (
-  remainDiv: HTMLElement,
-  remainingPile: Card[]
+  remainDiv: HTMLElement
 ) => {
   if (remainingPile.length === 0) return;
 
