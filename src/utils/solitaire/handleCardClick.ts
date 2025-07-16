@@ -27,8 +27,18 @@ export const handleCardClick = (
     const toCol = cardstoCol[colIndex];
     const isCancel = cancelMove(selected.card, toCol[toCol.length - 1]);
     if (!isCancel) {
+        console.log(
+            "checking validatemove",
+            selected.card,
+            toCol[toCol.length - 1],
+            toCol[toCol.length - 1].isFaceUp,
+            toCol[toCol.length - 1].internalValue,
+            toCol[toCol.length - 1].label,
+            toCol[toCol.length - 1].colour,
+            toCol[toCol.length - 1].suit
+        );
         const isValid = validateMove(selected.card, toCol[toCol.length - 1]);
-
+        console.log("after validatemove", isValid)
         if (!isValid) {
             alert(
                 "Card must be dropped on opposite colour and one rank higher."
@@ -37,7 +47,11 @@ export const handleCardClick = (
             refreshDisplay();
             return;
         }
+        moveSelectedCards(selected, colIndex);
     }
-    moveSelectedCards(selected, colIndex);
+    else {
+        setSelectedCard(null);
+    }
+    
     refreshDisplay();
 };

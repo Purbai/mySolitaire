@@ -197,12 +197,12 @@ body {
     position: absolute;
     width: 120px;
     height: 180px;
-    font-size: 40px;
+    font-size: 50px;
     border-radius: 10px;
     @include phone {
         width: 30px;
         height: 45px;
-        font-size: 10px;
+        font-size: 20px;
         border-radius: 6px;
     }
 }

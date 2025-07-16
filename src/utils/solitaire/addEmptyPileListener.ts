@@ -1,4 +1,4 @@
-import { getCardsToCol, getSelectedCard } from "../../state/cardState";
+import { getCardsToCol, getSelectedCard, setSelectedCard } from "../../state/cardState";
 import { refreshDisplay } from "./refreshDisplay";
 import { moveCardsToEmptyPile } from "./moveCardsToEmptyPile";
 import { displayRemainingAndWasteCards } from "../../displayRemainingAndWasteCards";
@@ -16,6 +16,8 @@ export const addEmptyPileClickListener = (pile: Element, colIndex: number) => {
             displayRemainingAndWasteCards(); // add this to reset the waste pile to have face-up top card
         } else {
             alert("Only Kings can be moved to empty columns.");
+            setSelectedCard(null);
+            refreshDisplay();
         }
     });
 };
