@@ -3,6 +3,7 @@ import { autoMoveToFoundation } from "../foundation/autoMoveToFoundation";
 import { displayFoundationCards } from "../../displayFoundationCards";
 import { displaySolitaireCards } from "../../displaySolitaireCards";
 import { wastePile, remainingPile } from "../../state/gameState";
+import { displayConfetti } from "./displayConfetti";
 
 export const checkGameWin = () => {
     const cardstoCol = getCardsToCol();
@@ -11,9 +12,10 @@ export const checkGameWin = () => {
     );
 
     if (wastePile.length === 0 && remainingPile.length === 0 && allFaceUp) {
-        autoMoveToFoundation();
-        displayFoundationCards();
+        autoMoveToFoundation(); // all cards are faced up hence automatically move the cards to foundation
+        displayFoundationCards(); 
         displaySolitaireCards();
-        alert("You have won the game - well done!");
+        displayConfetti();  // Game won!
     }
 };
+
