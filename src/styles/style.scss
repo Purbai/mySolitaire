@@ -1,14 +1,14 @@
 @use "./devices.scss";
 
 @mixin phone {
-  // for screens 428px or smaller
+  // for screens iphone16 pro max
   @media only screen and (max-width: devices.$xs) {
     @content;
   }
 }
 
 @mixin smallscreen {
-  // for small screens between 428px and 640px
+  // for small screens between iphone and desktop
   @media only screen and (min-width: #{devices.$xs + 1px})and (max-width: devices.$sm) {
     @content;
   }
@@ -16,9 +16,6 @@
 
 @mixin desktop {
   // for screens
-  // @media only screen and (min-width: (devices.$xs + 1px)) and (max-width: devices.$lg) {
-  //     @content;
-  // }
   @media only screen and (min-width: #{devices.$sm + 1px}) {
     @content;
   }
@@ -58,16 +55,17 @@ body {
   @include smallscreen {
     gap: 19px;
     padding: 19px;
-    flex-direction: column-reverse;
+    flex-direction: row-reverse;
   }
   @include phone {
     gap: 12px;
     padding: 12px;
-    flex-direction: column-reverse;
+    flex-direction: row-reverse;
   }
 
   &__top-row {
     display: flex;
+    flex-direction: column-reverse;
     gap: 25px;
     align-items: flex-start;
     justify-content: flex-start;
@@ -75,18 +73,20 @@ body {
       gap: 38px;
     }
     @include desktop {
+      flex-direction: row;
       gap: 100px;
     }
   }
 
   &__remaining {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 5px;
     @include smallscreen {
       gap: 8px;
     }
     @include desktop {
+      flex-direction: row;
       gap: 20px;
     }
     &-pile {
@@ -145,12 +145,17 @@ body {
 
   &__foundation {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 5px;
+    @include phone {
+      margin-top: 50px;
+    }
     @include smallscreen {
       gap: 8px;
+      margin-top: 30px;
     }
     @include desktop {
+      flex-direction: row;
       gap: 20px;
     }
 
@@ -214,11 +219,11 @@ body {
       position: relative;
       @include phone {
         width: 50px;
-        min-height: 500px;
+        min-height: 430px;
       }
       @include smallscreen {
         width: 76px;
-        min-height: 500px;
+        min-height: 430px;
       }
       @include desktop {
         width: 200px;
