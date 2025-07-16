@@ -7,12 +7,19 @@
   }
 }
 
+@mixin smallscreen {
+  // for small screens between 428px and 640px
+  @media only screen and (min-width: #{devices.$xs + 1px})and (max-width: devices.$sm) {
+    @content;
+  }
+}
+
 @mixin desktop {
   // for screens
   // @media only screen and (min-width: (devices.$xs + 1px)) and (max-width: devices.$lg) {
   //     @content;
   // }
-  @media only screen and (min-width: #{devices.$xs + 1px}) {
+  @media only screen and (min-width: #{devices.$sm + 1px}) {
     @content;
   }
 }
@@ -77,6 +84,10 @@ body {
         width: 120px;
         height: 180px;
       }
+      @include smallscreen() {
+        width: 60px;
+        height: 90px;
+      }
       @include phone {
         width: 60px;
         height: 90px;
@@ -106,6 +117,11 @@ body {
         width: 90px;
         height: 45px;
       }
+      @include smallscreen() {
+        font-size: 10px;
+        width: 90px;
+        height: 45px;
+      }
 
       &:hover {
         background-color: blue;
@@ -119,6 +135,10 @@ body {
 
     &-pile {
     @include phone {
+      width: 60px;
+      height: 90px;
+      }
+    @include smallscreen() {
       width: 60px;
       height: 90px;
       }
@@ -163,6 +183,10 @@ body {
         width: 100px;
         min-height: 500px;
       }
+      @include smallscreen() {
+        width: 100px;
+        min-height: 500px;
+      }
       @include desktop {
         width: 200px;
         min-height: 800px;
@@ -178,6 +202,12 @@ body {
   text-align: left;
   position: absolute;
   @include phone {
+    width: 60px;
+    height: 90px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+    @include smallscreen() {
     width: 60px;
     height: 90px;
     font-size: 14px;
