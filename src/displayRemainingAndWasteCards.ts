@@ -1,18 +1,15 @@
-
 import { clearPiles } from "./utils/remainingAndWaste/clearPiles";
 import { renderRemainingPile } from "./utils/remainingAndWaste/renderRemainingPile";
 import { renderWastePile } from "./utils/remainingAndWaste/renderWastePile";
 import { addRemainingPileClickListener } from "./utils/remainingAndWaste/addRemainingPileClickListener";
 
-export const displayRemainingAndWasteCards = () =>
-
-  {
+export const displayRemainingAndWasteCards = () => {
     const oldRemainDiv = document.querySelector(
-      ".game__remaining-pile--todraw"
+        ".game__remaining-pile--todraw"
     ) as HTMLElement;
 
     const wasteDiv = document.querySelector(
-      ".game__remaining-pile:not(.game__remaining-pile--todraw)"
+        ".game__remaining-pile:not(.game__remaining-pile--todraw)"
     ) as HTMLElement;
 
     clearPiles(oldRemainDiv, wasteDiv);
@@ -23,4 +20,4 @@ export const displayRemainingAndWasteCards = () =>
     renderRemainingPile(newRemainDiv);
     renderWastePile(wasteDiv);
     addRemainingPileClickListener(newRemainDiv);
-  };
+};

@@ -4,10 +4,9 @@ export let remainingPile: Card[] = [];
 export let wastePile: Card[] = [];
 
 export const setRemainingPile = (pile: Card[]) => {
-  remainingPile = pile;
+    remainingPile = pile;
 };
 
 export const setWastePile = (pile: Card[]) => {
-  wastePile = pile;
+    wastePile = pile;
 };
-

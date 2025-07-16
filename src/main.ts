@@ -13,42 +13,42 @@ import { setRemainingPile, setWastePile } from "./state/gameState";
 const start = document.querySelector<HTMLButtonElement>("#start");
 
 const handleStartClick = () => {
-  clearBoard();
-  resetFoundations();
-  // console.log(
-  //   "inside start button click - after clearboard",
-  //   foundations
-  // );
-  const deck = createDeck(Card);
-  deck.sort(() => Math.random() - 0.5);
+    clearBoard();
+    resetFoundations();
+    // console.log(
+    //   "inside start button click - after clearboard",
+    //   foundations
+    // );
+    const deck = createDeck(Card);
+    deck.sort(() => Math.random() - 0.5);
 
-  const cardstoCol = dealToColumns(deck);
-  setCardsToCol(cardstoCol); //
+    const cardstoCol = dealToColumns(deck);
+    setCardsToCol(cardstoCol); //
 
-  const remainingPile = [...deck];
-  remainingPile.splice(0, 28); // 28 cards used to layout the solitaire columns
-  let wastePile: Card[] = [];
-  setRemainingPile(remainingPile);
-  setWastePile(wastePile);
-  // console.log("inside start button click", remainingPile, wastePile, cardstoCol, foundations);
+    const remainingPile = [...deck];
+    remainingPile.splice(0, 28); // 28 cards used to layout the solitaire columns
+    let wastePile: Card[] = [];
+    setRemainingPile(remainingPile);
+    setWastePile(wastePile);
+    // console.log("inside start button click", remainingPile, wastePile, cardstoCol, foundations);
 
-  displaySolitaireCards();
-  displayRemainingAndWasteCards();
-  displayFoundationCards();
+    displaySolitaireCards();
+    displayRemainingAndWasteCards();
+    displayFoundationCards();
 };
 
 // checking for touch on mobile
 let touched = false;
 const handleTouchClickStart = (e: Event) => {
-  if (touched && e.type === "click") return;
-  if (e.type === "touchstart") touched = true;
+    if (touched && e.type === "click") return;
+    if (e.type === "touchstart") touched = true;
 
-  handleStartClick();
+    handleStartClick();
 };
 
 if (start) {
-  start.addEventListener("click", handleTouchClickStart);
-  start.addEventListener("touchstart", handleTouchClickStart);
+    start.addEventListener("click", handleTouchClickStart);
+    start.addEventListener("touchstart", handleTouchClickStart);
 } else {
-  alert("Start button not found in the DOM");
+    alert("Start button not found in the DOM");
 }

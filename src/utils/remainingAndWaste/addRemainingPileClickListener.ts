@@ -4,14 +4,14 @@ import { displayRemainingAndWasteCards } from "../../displayRemainingAndWasteCar
 import { remainingPile } from "../../state/gameState";
 
 export const addRemainingPileClickListener = (remainDiv: HTMLElement) => {
-  remainDiv.addEventListener("click", () => {
-    // console.log("clicked remaining pile");
-    if (remainingPile.length === 0) {
-      recycleWasteToRemaining();
-    } else {
-      drawFromRemaining();
-    }
+    remainDiv.addEventListener("click", () => {
+        // console.log("clicked remaining pile");
+        if (remainingPile.length === 0) {
+            recycleWasteToRemaining();
+        } else {
+            drawFromRemaining();
+        }
 
-    displayRemainingAndWasteCards();
-  });
+        displayRemainingAndWasteCards();
+    });
 };

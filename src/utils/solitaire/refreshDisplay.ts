@@ -1,9 +1,7 @@
 import { displaySolitaireCards } from "../../displaySolitaireCards";
 import { displayRemainingAndWasteCards } from "../../displayRemainingAndWasteCards";
 
-export const refreshDisplay = (
-
-) => {
+export const refreshDisplay = () => {
     displaySolitaireCards();
     displayRemainingAndWasteCards();
 };
