@@ -9,16 +9,31 @@ import { setCardsToCol } from "./state/cardState";
 import { resetFoundations } from "./utils/foundation/resetFoundations";
 import { clearBoard } from "./utils/clearBoard";
 import { setRemainingPile, setWastePile } from "./state/gameState";
+import { getCardsToCol } from "./state/cardState";
+import { wastePile, remainingPile } from "./state/gameState";
 
 const start = document.querySelector<HTMLButtonElement>("#start");
 
+const isGameInProgress = (): boolean => {
+    const cols = getCardsToCol();
+
+    return (
+        cols.some((col) => col.length > 0) ||
+        remainingPile.length > 0 ||
+        wastePile.length > 0
+    );
+};
+
 const handleStartClick = () => {
+    if (isGameInProgress()) {
+        const confirmRestart = confirm(
+            "A game is in progress. Do you want to restart anyway?"
+        );
+        if (!confirmRestart) return;
+    }
     clearBoard();
     resetFoundations();
-    // console.log(
-    //   "inside start button click - after clearboard",
-    //   foundations
-    // );
+
     const deck = createDeck(Card);
     deck.sort(() => Math.random() - 0.5);
 
@@ -30,25 +45,14 @@ const handleStartClick = () => {
     let wastePile: Card[] = [];
     setRemainingPile(remainingPile);
     setWastePile(wastePile);
-    // console.log("inside start button click", remainingPile, wastePile, cardstoCol, foundations);
 
     displaySolitaireCards();
     displayRemainingAndWasteCards();
     displayFoundationCards();
 };
 
-// checking for touch on mobile
-let touched = false;
-const handleTouchClickStart = (e: Event) => {
-    if (touched && e.type === "click") return;
-    if (e.type === "touchstart") touched = true;
-
-    handleStartClick();
-};
-
 if (start) {
-    start.addEventListener("click", handleTouchClickStart);
-    start.addEventListener("touchstart", handleTouchClickStart);
+    start.addEventListener("click", handleStartClick);
 } else {
     alert("Start button not found in the DOM");
 }

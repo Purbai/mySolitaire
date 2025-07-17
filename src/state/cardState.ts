@@ -17,7 +17,3 @@ export const getCardsToCol = () => cardsToCol;
 export const setCardsToCol = (val: Card[][]) => {
     cardsToCol = val;
 };
-
-// export const updateCardInColumn = (colIndex: number, newCol: Card[]) => {
-//     cardsToCol[colIndex] = newCol;
-// };
